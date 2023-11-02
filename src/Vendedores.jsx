@@ -8,7 +8,7 @@ function Vendedores({ onVendedorChange  }) {
       };
 
     return( 
-        <div className="contendor">
+        <div className="Vendedores_contendor">
 		<span>Seleccione vendedor </span>
         <select name="vendedor" id="vendedor" onChange={handleVendedorChange}>
 		<option value="ITECOM DIGITAL">ITECOM DIGITAL</option>

@@ -1,6 +1,6 @@
 table {
   font-family: "Arial";
-  margin: 25px auto;
+  margin: 0.5rem auto;
   border-collapse: collapse;
   border: 1px solid #eee;
   border-bottom: 2px solid #00cccc;
@@ -16,15 +16,45 @@ table th,
 table td {
   color: #999;
   border: 1px solid #eee;
-  padding: 12px 35px;
+  padding: 0.5rem 0.7rem;
   border-collapse: collapse;
 }
 table th {
   background: #00cccc;
   color: #fff;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 10px;
 }
 table th.last {
   border-right: none;
+}
+
+.contenedorPrincipal {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* La primera columna tiene un ancho fijo de 200px */
+}
+
+.Vendedores_contendor{
+  margin: 1rem;
+}
+
+
+.BuscarProductos{
+  margin: 1rem;
+  padding: 1rem;
+  background-color: antiquewhite;
+}
+
+.BuscarProductos_input{
+  margin: 1rem;
+}
+
+.paginacion-horizontal {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.paginacion-horizontal li {
+  margin-right: 10px; /* Ajusta el espacio entre los elementos de paginación */
 }
