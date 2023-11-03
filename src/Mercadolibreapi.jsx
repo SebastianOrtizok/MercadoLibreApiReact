@@ -1,63 +1,73 @@
 import React, { useEffect, useState } from "react";
 import MostrarDatosMain from "./MostrarDatosMain";
 import Vendedores from "./Vendedores";
-import BuscarProducto from "./BuscarProducto";
-
-
+// import BuscarProducto from "./BuscarProducto";
+import Paginacion from "./Paginacion";
 
 const accessToken =
-	"APP_USR-7650143381075360-100510-4c6c367756352433dc0b1090097b5a55-65494552";
+  "APP_USR-7650143381075360-100510-4c6c367756352433dc0b1090097b5a55-65494552";
 const apiUrlBase = "https://api.mercadolibre.com/sites/MLA/search?nickname=";
 
+
 function Mercadolibreapi() {
-	const [productos, setProductos] = useState([]);
-	const [vendedorSeleccionado, setVendedorSeleccionado] =
-		useState("ITECOM DIGITAL");
+  const [productos, setProductos] = useState([]);
+  const [vendedorSeleccionado, setVendedorSeleccionado] = useState("ITECOM DIGITAL");
+  const [totalPagina, setPaginaTotal] = useState([]);
+  const [pagina, setPagina] = useState(1);
+  const resultadosPorPagina = 50;
 
-	useEffect(() => {
-		// Reemplaza los espacios en el valor del vendedor seleccionado con "%20"
-		const vendedorFormatoURL = vendedorSeleccionado.replace(/ /g, "%20");
-		const apiUrl = `${apiUrlBase}${vendedorFormatoURL}&search_type=scan&scroll_id=YXBpY29yZS1xdWVzdGlvbnM=:ZHMtYXBpY29yZS1xdWVzdGlvbnMtMDI=:FGluY2x1ZGVfY29udGV4dF91dWlkDXF1ZXJ5QW5kFmV0Y2gBFFdXNVZTSXNCT1E0T0ZoN094UUpFAAAAAMr2v2MWSlRTbVBCUnhRc09ySVNFR1SNSw==`;
+  useEffect(() => {
+    fetchData();
+  }, [vendedorSeleccionado, pagina]);
 
-		buscarProductos(apiUrl, "principal");
-	}, [vendedorSeleccionado]);
+  const fetchData = async () => {
+    const vendedorFormatoURL = vendedorSeleccionado.replace(/ /g, "%20");
+    const offset = (pagina - 1) * resultadosPorPagina;
+    const apiUrl = `${apiUrlBase}${vendedorFormatoURL}&search_type=scan&offset=${offset}`;
+    console.log(apiUrl)
+    try {
+      const response = await fetch(apiUrl, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          Accept: "application/json",
+        },
+      });
 
-	const handleVendedorChange = (selectedVendedor) => {
-		setVendedorSeleccionado(selectedVendedor);
-	};
+      if (!response.ok) {
+        throw new Error(`Error de red: ${response.status}`);
+      }
 
-	async function buscarProductos(apiUrl, opcion) {
-		try {
-			console.log(apiUrl);
-			const response = await fetch(apiUrl, {
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${accessToken}`,
-					Accept: "application/json",
-				},
-			});
+      const productosData = await response.json();
 
-			if (!response.ok) {
-				throw new Error(`Error de red: ${response.status}`);
-			}
+      setProductos(productosData.results);
+      setPaginaTotal(productosData.paging.total);
+    } catch (error) {
+      console.error(`Hubo un problema con la solicitud: ${error}`);
+    }
+  };
 
-			const productosData = await response.json();
+  const handleVendedorChange = (selectedVendedor) => {
+    setVendedorSeleccionado(selectedVendedor);
+    setPagina(1); // Resetear la página a la primera cuando se cambia de vendedor
+  };
 
-			if (opcion === "principal") {
-				setProductos(productosData.results);
-			}
-		} catch (error) {
-			console.error(`Hubo un problema con la solicitud: ${error}`);
-		}
-	}
+  const cambiarPagina = (nuevaPagina) => {
+    setPagina(nuevaPagina);
+  };
 
-	return (
-		<div>
-		<Vendedores onVendedorChange={handleVendedorChange} />
-		<MostrarDatosMain productos={productos} />
-		<BuscarProducto accessToken={accessToken} />
-		</div>
-	);
+  return (
+    <div>
+      <Vendedores onVendedorChange={handleVendedorChange} />
+      <MostrarDatosMain productos={productos} />
+      <Paginacion
+        totalResultados={totalPagina}
+        resultadosPorPagina={resultadosPorPagina}
+        paginaActual={pagina}
+        cambiarPagina={cambiarPagina}
+      />
+    </div>
+  );
 }
 
 export default Mercadolibreapi;

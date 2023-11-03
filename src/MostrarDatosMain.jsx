@@ -1,11 +1,35 @@
-import React from 'react';
-import ExportToExcel from "./ExportToExcel";
-// import Catalogo from './Catalogo';
-
+import React, { useState } from 'react';
+import ExportToExcel from './ExportToExcel';
+import DolarHoy from './DolarHoy';
 
 function MostrarDatosMain(props) {
   const { productos } = props;
-console.log(productos[0])
+  const [filtroActivo, setFiltroActivo] = useState(false); // Estado para controlar el filtro
+  const [categoriaFiltrada, setCategoriaFiltrada] = useState(null); // Estado para la categoría filtrada
+
+  // Aplicar el filtro al conjunto de productos
+  const productosFiltrados = filtroActivo
+    ? productos.filter((producto) => producto.category_id === categoriaFiltrada)
+    : productos;
+
+  // Función para cambiar el estado del filtro
+  const aplicarFiltro = (categoria) => {
+    if (filtroActivo && categoria === categoriaFiltrada) {
+      console.log("Aplicando filtro", categoria);
+      console.log("Filtro activo:", filtroActivo);
+      console.log("Categoría filtrada:", categoriaFiltrada);
+
+      // Si el filtro ya está activo y se hace clic en la misma categoría, quitar el filtro
+      setFiltroActivo(false);
+      setCategoriaFiltrada(null);
+    } else {
+      // Aplicar el filtro para mostrar solo productos de la categoría seleccionada
+      setFiltroActivo(true);
+      setCategoriaFiltrada(categoria);
+    }
+  };
+
+
   return (
     <>
   <div className='contenedorPrincipal'>
@@ -56,6 +80,7 @@ console.log(productos[0])
 
     </tbody>
   </table>
+  <DolarHoy />
 </div>
   <div>
   <button>
@@ -65,7 +90,6 @@ console.log(productos[0])
         <thead>
           <tr>
           <th className="text-center">IMAGEN</th>
-          <th className="text-center">CAT ID</th>
             <th className="text-center">CATEGORIA</th>
             <th className="text-center">PUBLICACION</th>
             <th className="text-center">ENVIO</th>
@@ -80,11 +104,18 @@ console.log(productos[0])
           </tr>
         </thead>
         <tbody>
-          {productos.map((producto) => (
+        {productosFiltrados.map((producto) => (
             <tr key={producto.id}>
               <td><img src={producto.thumbnail}></img> </td>
-              <td>{producto.category_id}</td>
-              <td>{producto.domain_id.substring(0, 15)}</td> 
+              <td>
+              <button onClick={() => aplicarFiltro(producto.category_id)}>
+                  {filtroActivo && categoriaFiltrada === producto.category_id
+                    ? 'Quitar Filtro'
+                    : 'Filtrar Categoría'}{' '}
+                  {producto.category_id}
+                </button>
+         {producto.category_id}{producto.domain_id.substring(4, 18)}
+              </td> 
               <td>{producto.catalog_product_id}
               <p>{producto.condition}</p></td>
             <td>{producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>

@@ -55,6 +55,15 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+
+.pagina-actual {
+  background-color: rgb(0,204,204); /* Cambia el color de fondo según tus preferencias */
+  color: #fff; /* Cambia el color del texto si es necesario */
+  /* Otros estilos de destacado */
+}
+
+
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

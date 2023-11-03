@@ -10,12 +10,18 @@ function Paginacion({ totalResultados, resultadosPorPagina, paginaActual, cambia
 
   return (
     <ul className="paginacion-horizontal">
-      {paginas.slice(rangoInicio - 1, rangoFin).map(p => (
-        <li key={p}>
-          <button onClick={() => cambiarPagina(p)}>{p}</button>
-        </li>
-      ))}
-    </ul>
+    {paginas.slice(rangoInicio - 1, rangoFin).map(p => (
+      <li key={p}>
+        <button
+          onClick={() => cambiarPagina(p)}
+          className={paginaActual === p ? "pagina-actual" : ""}
+        >
+          {p}
+        </button>
+      </li>
+    ))}
+  </ul>
+  
   );
 }
 
