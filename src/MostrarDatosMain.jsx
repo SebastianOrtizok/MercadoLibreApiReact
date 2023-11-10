@@ -93,12 +93,11 @@ function MostrarDatosMain(props) {
             <th className="text-center">CATEGORIA</th>
             <th className="text-center">PUBLICACION</th>
             <th className="text-center">ENVIO</th>
-            <th className="text-center">CALIDAD</th>
+            <th className="text-center">TIPO PUBLICACION</th>
             <th className="text-center">TITULO</th>
             <th className="text-center">PRECIO</th>
             <th className="text-center">LINK</th>
             <th className="text-center">STOCK</th>
-            <th className="text-center">TIPO</th>
             <th className="text-center">CATALOGO</th>
             <th className="text-center">VENDIDOS</th>
           </tr>
@@ -119,12 +118,12 @@ function MostrarDatosMain(props) {
               <td>{producto.catalog_product_id}
               <p>{producto.condition}</p></td>
             <td>{producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
-              <td>{producto.seller.seller_reputation.power_seller_status}</td>
+              <td>{producto.listing_type_id}</td> 
+              
               <td>{producto.title}</td>
               <td>$ {producto.price}</td>
               <td><a href={producto.permalink} target="_blank" rel="noopener noreferrer">Link</a></td>
               <td>{producto.available_quantity}</td>
-              <td>{producto.listing_type_id}</td> 
               <td>{producto.catalog_listing ? "EN CATALOGO" : "SIN CATALOGO"}
               <p>{producto.winner_item_id ? "GANANDO" : "PERDIENDO"}</p>
               {/* <Catalogo catalogProductId={producto.catalog_product_id} /> */}

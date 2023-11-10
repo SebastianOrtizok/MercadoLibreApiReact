@@ -12,7 +12,6 @@ function DolarHoy() {
       .then(response => response.json())
       .then(data => {
         setDolarData(data);
-        console.log(data)
         setLoading(false);
       })
       .catch(error => {

@@ -42,6 +42,7 @@ function BuscarProductos(accessToken) {
 
   const cambiarPagina = (nuevaPagina) => {
     setPagina(nuevaPagina);
+    console.log( resultados )
   };
 
   return (

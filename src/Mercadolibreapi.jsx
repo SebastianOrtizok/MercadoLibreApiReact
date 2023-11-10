@@ -39,6 +39,7 @@ function Mercadolibreapi() {
       }
 
       const productosData = await response.json();
+      console.log( productosData )
 
       setProductos(productosData.results);
       setPaginaTotal(productosData.paging.total);
