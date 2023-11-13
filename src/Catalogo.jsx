@@ -5,7 +5,7 @@ function Catalogo(accessToken) {
 
   const fetchResultados = () => {
 
-    const url = ` https://api.mercadolibre.com/sites/MLA/search?nickname=impactotenis`;
+    const url = `https://api.mercadolibre.com/users/185702920`;
     console.log(url);
   
     fetch(url, {

@@ -1,0 +1,350 @@
+import React, { useState } from 'react';
+import ExportToExcel from './ExportToExcel';
+import DolarHoy from './DolarHoy';
+
+function MostrarDatosMain(props) {
+  const { productos } = props;
+  const [filtroActivo, setFiltroActivo] = useState(false); // Estado para controlar el filtro
+  const [categoriaFiltrada, setCategoriaFiltrada] = useState(null); // Estado para la categoría filtrada
+  const [filterPrecio, setFilterPrecio] = useState(0)
+  
+  // Aplicar el filtro al conjunto de productos
+  const productosFiltrados = filtroActivo
+    ? productos.filter((producto) => producto.category_id === categoriaFiltrada ||  producto.price >= filterPrecio)
+    : productos;
+
+    // console.log("productos filtrados cat y precio: " + productosFiltrados)
+
+
+  // Función para cambiar el estado del filtro
+  const aplicarFiltro = (categoria, precio) => {
+    if (filtroActivo && categoria === categoriaFiltrada ||  precio >= filterPrecio) {
+      // console.log("Aplicando filtro", categoria);
+      // console.log("Filtro activo:", filtroActivo);
+      // console.log("Categoría filtrada:", categoriaFiltrada);
+
+      // Si el filtro ya está activo y se hace clic en la misma categoría, quitar el filtro
+      setFiltroActivo(false);
+      setCategoriaFiltrada(null);
+    } else {
+      // Aplicar el filtro para mostrar solo productos de la categoría seleccionada
+      setFiltroActivo(true);
+      setCategoriaFiltrada(categoria);
+      setFilterPrecio(filterPrecio)
+    }
+
+  };
+  const handelChangeMinPrice = (event)=>{
+        const minPrice= event.target.value
+        setFilterPrecio(minPrice)
+        aplicarFiltro()
+
+        // console.log("pecio minimo: " + minPrice)
+      }
+
+ 
+      
+  return (
+    <>
+  <div className='contenedorPrincipal'>
+  <table>
+    <thead>
+      <tr>
+        <th className="text-center">Eshop</th>
+        <th className="text-center">Dirección</th>
+        <th className="text-center">Localidad</th>
+        <th className="text-center">Eshop experiencia</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr >
+        <td><img style={{ width: '50%', height: 'auto' }} src={productos[0]?.seller?.eshop?.eshop_logo_url} /></td>
+        <td>{productos[0]?.seller_address?.city?.name}</td>
+        <td>{productos[0]?.seller_address?.state?.name}</td>
+        <td>{productos[0]?.seller?.eshop?.eshop_experience}</td>
+      </tr>
+    </tbody>
+  </table>
+    <table>
+    <thead>
+      <tr>
+        <th className="text-center">Vendedor</th>
+        <th className="text-center">Ventas</th>
+        <th className="text-center">Cancelaciones</th>
+        <th className="text-center">Reclamos</th>
+        <th className="text-center">Cancelaciones históricas</th>
+        <th className="text-center">Ventas históricas</th>
+        <th className="text-center">Calidad de vendedor</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        <tr >
+        <td>{productos[0]?.seller?.nickname}</td>
+        <td>{productos[0]?.seller?.seller_reputation?.metrics?.sales?.completed}</td>
+        <td>{productos[0]?.seller?.seller_reputation?.metrics?.cancellations?.value}</td>
+        <td>{productos[0]?.seller?.seller_reputation?.metrics?.claims?.value}
+        <p>Rate {productos[0]?.seller?.seller_reputation?.metrics?.claims?.rate}</p>
+        </td>
+        <td>{productos[0]?.seller?.seller_reputation?.transactions?.canceled}</td>
+        <td>{productos[0]?.seller?.seller_reputation?.transactions?.completed}</td>
+        <td>{productos[0]?.seller?.seller_reputation?.power_seller_status}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <DolarHoy />
+</div>
+  <div>
+  <button>
+  <ExportToExcel productos={productos} />
+  </button>
+    <table>
+        <thead>
+          <tr>
+          <th className="text-center">IMAGEN</th>
+            <th className="text-center">CATEGORIA</th>
+            <th className="text-center">PUBLICACION</th>
+            <th className="text-center">ENVIO</th>
+            <th className="text-center">TIPO PUBLICACION</th>
+            <th className="text-center">TITULO</th>
+            <th className="text-center">PRECIO
+            <div>
+<label htmlFor={productos.price}>Precio a partir de: </label>
+<input
+type="range"
+id={productos.price}
+min="0"
+max="1000000"
+onChange={handelChangeMinPrice}
+value={filterPrecio}
+/>
+<span>$ {filterPrecio}</span>
+</div>
+            </th>
+            <th className="text-center">LINK</th>
+            <th className="text-center">STOCK</th>
+            <th className="text-center">CATALOGO</th>
+            <th className="text-center">VENDIDOS</th>
+          </tr>
+        </thead>
+        <tbody>
+        {productosFiltrados.map((producto) => (
+            <tr key={producto.id}>
+              <td><img src={producto.thumbnail}></img> </td>
+              <td>
+              <button onClick={() => aplicarFiltro(producto.category_id, producto.price)}>
+                  {filtroActivo && categoriaFiltrada === producto.category_id
+                    ? 'Quitar Filtro'
+                    : 'Filtrar Categoría'}{' '}
+                  {producto.category_id}
+                </button>
+         {producto.category_id}{producto.domain_id.substring(4, 18)}
+              </td> 
+              <td>{producto.catalog_product_id}
+              <p>{producto.condition}</p></td>
+            <td>{producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
+              <td>{producto.listing_type_id}</td> 
+              
+              <td>{producto.title}</td>
+              <td>$ {producto.price}
+              </td>
+              <td><a href={producto.permalink} target="_blank" rel="noopener noreferrer">Link</a></td>
+              <td>{producto.available_quantity}</td>
+              <td>{producto.catalog_listing ? "EN CATALOGO" : "SIN CATALOGO"}
+              <p>{producto.winner_item_id ? "GANANDO" : "PERDIENDO"}</p>
+              {/* <Catalogo catalogProductId={producto.catalog_product_id} /> */}
+              <p>{producto.catalog_product_id}</p>
+
+              </td>
+              <td>{producto.sold_quantity}</td>
+             </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
+      </>
+  );
+}
+
+
+***********************************
+
+
+
+
+
+import React, { useState } from 'react';
+import ExportToExcel from './ExportToExcel';
+import DolarHoy from './DolarHoy';
+
+function MostrarDatosMain(props) {
+  const { productos } = props;
+  const [filtroActivo, setFiltroActivo] = useState(false);
+  const [categoriaFiltrada, setCategoriaFiltrada] = useState(null);
+  const [filterPrecio, setFilterPrecio] = useState(0);
+  
+  // Filtrar productos por categoría
+  const productosFiltradosPorCategoria = filtroActivo
+    ? productos.filter((producto) => producto.category_id === categoriaFiltrada)
+    : productos;
+
+  // Filtrar productos por precio
+  const productosFiltradosPorPrecio = productosFiltradosPorCategoria.filter((producto) => producto.price >= filterPrecio);
+
+  const aplicarFiltro = (categoria) => {
+    if (filtroActivo && categoria === categoriaFiltrada) {
+      setFiltroActivo(false);
+      setCategoriaFiltrada(null);
+    } else {
+      setFiltroActivo(true);
+      setCategoriaFiltrada(categoria);
+    }
+  };
+
+  const handelChangeMinPrice = (event) => {
+    const minPrice = event.target.value;
+    setFilterPrecio(minPrice);
+  };
+
+  return (
+    <>
+      <div className='contenedorPrincipal'>
+        <table>
+          <thead>
+            <tr>
+              <th className="text-center">Eshop</th>
+              <th className="text-center">Dirección</th>
+              <th className="text-center">Localidad</th>
+              <th className="text-center">Eshop experiencia</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><img style={{ width: '50%', height: 'auto' }} src={productos[0]?.seller?.eshop?.eshop_logo_url} alt="Eshop Logo" /></td>
+              <td>{productos[0]?.seller_address?.city?.name}</td>
+              <td>{productos[0]?.seller_address?.state?.name}</td>
+              <td>{productos[0]?.seller?.eshop?.eshop_experience}</td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th className="text-center">Vendedor</th>
+              <th className="text-center">Ventas</th>
+              <th className="text-center">Cancelaciones</th>
+              <th className="text-center">Reclamos</th>
+              <th className="text-center">Cancelaciones históricas</th>
+              <th className="text-center">Ventas históricas</th>
+              <th className="text-center">Calidad de vendedor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{productos[0]?.seller?.nickname}</td>
+              <td>{productos[0]?.seller?.seller_reputation?.metrics?.sales?.completed}</td>
+              <td>{productos[0]?.seller?.seller_reputation?.metrics?.cancellations?.value}</td>
+              <td>{productos[0]?.seller?.seller_reputation?.metrics?.claims?.value}
+                <p>Rate {productos[0]?.seller?.seller_reputation?.metrics?.claims?.rate}</p>
+              </td>
+              <td>{productos[0]?.seller?.seller_reputation?.transactions?.canceled}</td>
+              <td>{productos[0]?.seller?.seller_reputation?.transactions?.completed}</td>
+              <td>{productos[0]?.seller?.seller_reputation?.power_seller_status}</td>
+            </tr>
+          </tbody>
+        </table>
+        <DolarHoy />
+      </div>
+      <div>
+        <button>
+          <ExportToExcel productos={productos} />
+        </button>
+        <table>
+          <thead>
+            <tr>
+              <th className="text-center">IMAGEN</th>
+              <th className="text-center">CATEGORIA</th>
+              <th className="text-center">PUBLICACION</th>
+              <th className="text-center">ENVIO</th>
+              <th className="text-center">TIPO PUBLICACION</th>
+              <th className="text-center">TITULO</th>
+              <th className="text-center">PRECIO
+                <div>
+                  <label htmlFor={productos.price}>Precio a partir de: </label>
+                  <input
+                    type="range"
+                    id={productos.price}
+                    min="0"
+                    max="1000000"
+                    onChange={handelChangeMinPrice}
+                    value={filterPrecio}
+                  />
+                  <span>$ {filterPrecio}</span>
+                </div>
+              </th>
+              <th className="text-center">LINK</th>
+              <th className="text-center">STOCK</th>
+              <th className="text-center">CATALOGO</th>
+              <th className="text-center">VENDIDOS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {productosFiltradosPorPrecio.map((producto) => (
+              <tr key={producto.id}>
+                <td><img src={producto.thumbnail} alt={producto.title} /></td>
+                <td>
+                  <button onClick={() => aplicarFiltro(producto.category_id)}>
+                    {filtroActivo && categoriaFiltrada === producto.category_id
+                      ? 'Quitar Filtro'
+                      : 'Filtrar Categoría'}{' '}
+                    {producto.category_id}
+                  </button>
+                  {producto.category_id}{producto.domain_id.substring(4, 18)}
+                </td>
+                <td>{producto.catalog_product_id}
+                  <p>{producto.condition}</p></td>
+                <td>{producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
+                <td>{producto.listing_type_id}</td>
+                <td>{producto.title}</td>
+                <td>$ {producto.price}</td>
+                <td><a href={producto.permalink} target="_blank" rel="noopener noreferrer">Link</a></td>
+                <td>{producto.available_quantity}</td>
+                <td>{producto.catalog_listing ? "EN CATALOGO" : "SIN CATALOGO"}
+                  <p>{producto.winner_item_id ? "GANANDO" : "PERDIENDO"}</p>
+                  <p>{producto.catalog_product_id}</p>
+                </td>
+                <td>{producto.sold_quantity}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        {/* Tabla de productos filtrados por categoría */}
+        <table>
+          <thead>
+            <tr>
+              <th className="text-center">IMAGEN</th>
+              {/* ... (otros encabezados) */}
+            </tr>
+          </thead>
+          <tbody>
+            {productosFiltradosPorCategoria.map((producto) => (
+              <tr key={producto.id}>
+                {/* Contenido de la fila */}
+                <td><img src={producto.thumbnail} alt={producto.title} /></td>
+                {/* ... (otros datos del producto) */}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
+  );
+}
+
+export default MostrarDatosMain;
+
+
+export default MostrarDatosMain;
