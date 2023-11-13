@@ -23,7 +23,7 @@ function Mercadolibreapi() {
   const fetchData = async () => {
     const vendedorFormatoURL = vendedorSeleccionado.replace(/ /g, "%20");
     const offset = (pagina - 1) * resultadosPorPagina;
-    const apiUrl = `${apiUrlBase}${vendedorFormatoURL}&search_type=scan&offset=${offset}`;
+    const apiUrl = `${apiUrlBase}${vendedorFormatoURL}&sort=price_des&search_type=scan&offset=${offset}`;
     console.log(apiUrl)
     try {
       const response = await fetch(apiUrl, {

@@ -1,42 +1,116 @@
-table {
+.contenedorPrincipal {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  justify-items: center;
+  background-color: antiquewhite;
+  padding: 0.5rem;
+}
+
+.dolarHoy{
   font-family: "Arial";
-  margin: 0.5rem auto;
+  grid-column: span 2;
+  font-size: 0.6rem;
+}
+
+.contenedorTablaPrncipal{
+  max-height: 600px; /* Ajusta la altura según tus necesidades */
+  overflow-y: auto; /* Agrega una barra de desplazamiento vertical si es necesario */
+}
+
+
+.contenedorTablaPrincipal {
+  font-family: "Arial";
+  table-layout: fixed;
+  width: 100%;
+  background-color: #fff;
   border-collapse: collapse;
   border: 1px solid #eee;
   border-bottom: 2px solid #00cccc;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
 }
-table tr:hover {
+.contenedorTablaPrincipal tr:hover {
   background: #f4f4f4;
 }
-table tr:hover td {
+.contenedorTablaPrincipal tr:hover td {
   color: #555;
 }
-table th,
-table td {
+.contenedorTablaPrincipal th,
+.contenedorTablaPrincipal td {
+  width: 200px;
   color: #999;
   border: 1px solid #eee;
   padding: 0.5rem 0.7rem;
   border-collapse: collapse;
   text-align: center;
+  
 }
-table th {
+
+.titulo {
+  width: 300px;
+}
+
+.filtroRange {
+  width: 80px;
+}
+
+
+.contenedorTablaPrincipal th {
   background: #00cccc;
   color: #fff;
   text-transform: uppercase;
   font-size: 10px;
 }
-table th.last {
+/* table th.last {
   border-right: none;
+} */
+
+.tableVendedor{
+  font-family: "Arial";
+  margin: 0.1rem auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
-.contenedorPrincipal {
-  display: grid;
-  grid-template-columns: 1fr 2fr; /* La primera columna tiene un ancho fijo de 200px */
+.tableVendedor th {
+  background: #00cccc;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+
+}
+
+
+.tableVendedor2{
+  font-family: "Arial";
+  margin: 0.1rem auto;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.tableVendedor2 th {
+  background: #00cccc;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 10px;
+
 }
 
 .Vendedores_contendor{
-  margin: 1rem;
+  padding: 1rem;
+  background-color: antiquewhite;
+  align-items: center;
+  text-align: center;
 }
 
 
@@ -57,5 +131,5 @@ table th.last {
 }
 
 .paginacion-horizontal li {
-  margin-right: 10px; /* Ajusta el espacio entre los elementos de paginación */
+  margin-right: 10px;
 }

@@ -21,23 +21,23 @@ function DolarHoy() {
   }, []); // El segundo argumento vacío [] asegura que se realice la solicitud una vez al cargar el componente
 
   return (
-    <div>
+    <>
       {loading ? (
         <p>Cargando datos...</p>
       ) : (
-        <table>
+        <table className='dolarHoy'>
         <thead>
       <tr>
       <th className="text-center">Dolar</th>
-        <th className="text-center">Blue<p>$ {dolarData.blue.value_sell}</p></th>
-        <th className="text-center">Blue<p>$ {dolarData.blue.value_buy}</p></th>
-        <th className="text-center">Oficial<p>$ {dolarData.oficial.value_sell}</p></th>
-        <th className="text-center">Oficial<p>$ {dolarData.oficial.value_buy}</p></th>
+        <th className="text-center">Blue venta $ {dolarData.blue.value_sell}</th>
+        <th className="text-center">Blue compra $ {dolarData.blue.value_buy}</th>
+        <th className="text-center">Oficial venta $ {dolarData.oficial.value_sell}</th>
+        <th className="text-center">Oficial compra $ {dolarData.oficial.value_buy}</th>
       </tr>
     </thead>
         </table>
       )}
-    </div>
+    </>
   );
 }
 

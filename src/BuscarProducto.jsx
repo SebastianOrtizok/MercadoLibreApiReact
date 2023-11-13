@@ -12,7 +12,7 @@ function BuscarProductos(accessToken) {
   const fetchResultados = () => {
     const offset = (pagina - 1) * resultadosPorPagina;
     const url = `https://api.mercadolibre.com/sites/MLA/search?q=${buscar}&sort=price_asc&offset=${offset}`;
-    console.log(url);
+
   
     fetch(url, {
       method: 'GET',
@@ -54,7 +54,7 @@ function BuscarProductos(accessToken) {
         onChange={e => setBuscar(e.target.value)}
       />
       <button onClick={handleBuscar}>Buscar</button>
-
+      <div className='contenedorTablaPrincipal'>
       <table>
         <thead>
           <tr>
@@ -99,6 +99,7 @@ function BuscarProductos(accessToken) {
           ))}
         </tbody>
       </table>
+      </div>
       <Paginacion
         totalResultados={totalPagina}
         resultadosPorPagina={resultadosPorPagina}
