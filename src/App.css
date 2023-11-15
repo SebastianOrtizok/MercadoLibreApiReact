@@ -133,3 +133,11 @@
 .paginacion-horizontal li {
   margin-right: 10px;
 }
+
+.filtro {
+  display: flex;
+  background-color: #00cccc;
+margin: 0px 1px 0px 1px;
+  justify-content: space-between;
+  align-items: stretch;
+}

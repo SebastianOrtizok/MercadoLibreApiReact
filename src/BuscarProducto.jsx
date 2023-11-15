@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Paginacion from './Paginacion';
+import Filtro from './Filtro';
 
-function BuscarProductos(accessToken) {
+function BuscarProductos() {
   const [buscar, setBuscar] = useState('');
   const [resultados, setResultados] = useState([]);
   const [totalPagina, setPaginaTotal] = useState([]);
   const [pagina, setPagina] = useState(1);
   const resultadosPorPagina = 50;
+  const [productosFiltrados, setProductosFiltrados] = useState(resultados);
 
 
   const fetchResultados = () => {
@@ -17,7 +19,7 @@ function BuscarProductos(accessToken) {
     fetch(url, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${accessToken}`,
+        Authorization: `Bearer ${ "APP_USR-7650143381075360-111511-c1949fe019e21816969c706da923d8d2-65494552"}`,
       },
     })
       .then((response) => response.json())
@@ -45,6 +47,25 @@ function BuscarProductos(accessToken) {
     console.log( resultados )
   };
 
+  useEffect(() => {
+    setProductosFiltrados(resultados);
+  }, [resultados]);
+
+  const handleFilterChange = (nuevosFiltros) => {
+    // Actualizamos el estado con los nuevos filtros
+    setProductosFiltrados(
+      resultados.filter(producto => {
+        return (
+          (nuevosFiltros.category === "all" || producto.category_id === nuevosFiltros.category) &&
+          (nuevosFiltros.minPrice <= producto.price) &&
+          (nuevosFiltros.catalogo === "all" || nuevosFiltros.catalogo === producto.catalog_listing.toString()) &&
+          (nuevosFiltros.ventas <= producto.sold_quantity)
+        );
+      })
+    );
+  };
+
+
   return (
     <div className='BuscarProductos'>
       <input className='BuscarProductos_input'
@@ -55,6 +76,7 @@ function BuscarProductos(accessToken) {
       />
       <button onClick={handleBuscar}>Buscar</button>
       <div className='contenedorTablaPrincipal'>
+      <Filtro onFilterChange={handleFilterChange} />
       <table>
         <thead>
           <tr>
@@ -74,7 +96,7 @@ function BuscarProductos(accessToken) {
           </tr>
         </thead>
         <tbody>
-          {resultados.map((producto) => (
+          {productosFiltrados.map((producto) => (
             <tr key={producto.id}>
               <td><img src={producto.thumbnail}></img> </td>
               <td>{producto.category_id}</td>

@@ -6,8 +6,11 @@ function Header() {
       <Link to="/">
         <button>Home</button>
       </Link>
+      <Link to="/vendedor">
+        <button>Vendedor</button>
+      </Link>
       <Link to="/catalogo">
-        <button>Catalogo</button>
+        <button>Catálogo</button>
       </Link>
       <Link to="/buscar">
         <button>BuscarProducto</button>
