@@ -1,20 +1,53 @@
-import { Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Header.css';
 
 function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-      <Link to="/vendedor">
-        <button>Vendedor</button>
-      </Link>
-      <Link to="/catalogo">
-        <button>Catálogo</button>
-      </Link>
-      <Link to="/buscar">
-        <button>BuscarProducto</button>
-      </Link>
+      <div className={`menu-h ${menuOpen ? 'menu-open' : ''}`}>
+        <button className="js-menu menu" onClick={toggleMenu} type="button">
+          <span className="bar"></span>
+        </button>
+        <nav>
+          <h2>JavascriptSolutions</h2>
+          <span>
+            Consumiendo api ML
+          </span>
+          <ul>
+          <Link to="/">
+            <li>
+              <i className="fa fa-home"></i>
+             Home
+            </li>
+            </Link>
+            <Link to="/vendedor">
+            <li>
+              <i className="fa fa-wpforms"></i>
+   Vendedor
+            </li>
+            </Link>
+            <Link to="/catalogo">
+            <li>
+              <i className="fa fa-credit-card"></i>
+              Catálogo
+            </li>
+            </Link>
+            <Link to="/buscar">
+            <li>
+              <i className="fa fa-credit-card"></i>
+              BuscarProducto
+            </li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
     </>
   );
 }
