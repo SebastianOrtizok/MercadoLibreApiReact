@@ -12,7 +12,7 @@ function Vendedor() {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${"APP_USR-7650143381075360-111519-e91a9d07fcaa73086476d496c47f84ed-65494552"}`,
+            Authorization: `Bearer ${"APP_USR-7650143381075360-111718-97575ffb1eb72878bfe822ecaad8a97a-65494552"}`,
           },
         });
 
@@ -27,96 +27,172 @@ function Vendedor() {
     fetchResultados();
   }, []);
 
+  console.log("Acces Token pagina vendedor: ")
   console.log(datosVendedor);
 
   // Resto del componente...
 
   return (
 <>
-<div className='container'>
+<div className='contenedorTablaPrincipal'>
     {datosVendedor && (
-    <ul>
-      <li>
-        Nombre: {datosVendedor.nickname}
-      </li>
-      <li>
-        Tipo de usuario : {datosVendedor.user_type}
-      </li>
-      <li>
-        Fecha de alta: {datosVendedor.registration_date} 
-      </li>
-      <li>
-        Dirección: {datosVendedor.address.address}
-      </li>
-      <li>
-        Dirección: {datosVendedor.address.city}
-      </li>
-      <li>
-        Código Postal: {datosVendedor.address.zip_code}
-      </li>
-      <li>
-        Teléfono: Cod.Area: {datosVendedor.phone.area_code} Ext: {datosVendedor.phone.extension} nro: {datosVendedor.phone.number}
-      </li>
-      <li>
-        Email: {datosVendedor.email}
-      </li>
-      <li>
-        Email mercadolibre: {datosVendedor.secure_email}
-      </li>
-      <li>
-        Experiencia como vendedor: {datosVendedor.seller_experience}
-      </li>
+      <table>
+        <tr>
+          <td>
+          Nombre:
+          </td>
+          <td>{datosVendedor.nickname}</td>
+        </tr>
+        <tr>
+          <td>
+          Tipo de usuario:
+          </td>
+          <td>{datosVendedor.user_type}</td>
+        </tr>
+        <tr>
+          <td>
+          Fecha de alta:
+          </td>
+          <td>{datosVendedor.registration_date} </td>
+        </tr>
+        <tr>
+          <td>
+          Dirección:
+          </td>
+          <td>{datosVendedor.address.address}</td>
+        </tr>
+        <tr>
+          <td>
+          Dirección:
+          </td>
+          <td>{datosVendedor.address.city}</td>
+        </tr>
+        <tr>
+          <td>
+          Código Postal:
+          </td>
+          <td> {datosVendedor.address.zip_code}</td>
+        </tr>
+        <tr>
+          <td>
+          Teléfono:
+          </td>
+          <td>Cod.Area: {datosVendedor.phone.area_code} Ext: {datosVendedor.phone.extension} nro: {datosVendedor.phone.number}</td>
+        </tr>
+        <tr>
+          <td>
+          Email:
+          </td>
+          <td>{datosVendedor.email}</td>
+        </tr>
+        <tr>
+          <td>
+          Email mercadolibre:
+          </td>
+          <td> {datosVendedor.secure_email}</td>
+        </tr>
+        <tr>
+          <td>
+          Experiencia como vendedor::
+          </td>
+          <td>{datosVendedor.seller_experience}</td>
+        </tr>
+        <tr>
+          <td>
+          Nombre:
+          </td>
+          <td>{datosVendedor.first_name} Apellido: {datosVendedor.last_name}</td>
+        </tr>
+        <tr>
+          <td>
+          Identificación:
+          </td>
+          <td>{datosVendedor.identification.number}</td>
+        </tr>
+        <tr>
+          <td>
+          Puntos:
+          </td>
+          <td>{datosVendedor.points}</td>
+        </tr>
+        <tr>
+          <td>
+          Cancelaciones:
+          </td>
+          <td>Periodo {datosVendedor.seller_reputation.metrics.cancellations.period} %  {datosVendedor.seller_reputation.metrics.cancellations.rate} cantidad {datosVendedor.seller_reputation.metrics.cancellations.value }</td>
+        </tr>
+        <tr>
+          <td>
+          Reclamos:
+          </td>
+          <td> Periodo {datosVendedor.seller_reputation.metrics.claims.period} %  {datosVendedor.seller_reputation.metrics.claims.rate} cantidad {datosVendedor.seller_reputation.metrics.claims.value }</td>
+        </tr>
+        <tr>
+          <td>
+          demoras:
+          </td>
+          <td> Periodo {datosVendedor.seller_reputation.metrics.delayed_handling_time.period} %  {datosVendedor.seller_reputation.metrics.delayed_handling_time.rate} cantidad {datosVendedor.seller_reputation.metrics.delayed_handling_time.value }</td>
+        </tr>
+        <tr>
+          <td>
+          ventas:
+          </td>
+          <td>Periodo {datosVendedor.seller_reputation.metrics.sales.period} completadas  {datosVendedor.seller_reputation.metrics.sales.completed}</td>
+        </tr>
+        <tr>
+          <td>
+          Operaciones:
+          </td>
+          <td> Período {datosVendedor.seller_reputation.transactions.period} Canceladas {datosVendedor.seller_reputation.transactions.canceled} completadas  {datosVendedor.seller_reputation.transactions.completed} </td>
+        </tr>
+        <tr>
+          <td>
+          Calificaciones:
+          </td>
+          <td>Negativas {datosVendedor.seller_reputation.transactions.ratings.negative} Neutrales {datosVendedor.seller_reputation.transactions.ratings.neutral} Positivas  {datosVendedor.seller_reputation.transactions.ratings.positive} Total {datosVendedor.seller_reputation.transactions.ratings.total}</td>
+        </tr>
+        <tr>
+          <td>
+          Estado del vendedor:
+          </td>
+          <td>{datosVendedor.seller_reputation.metrics.power_seller_status}</td>
+        </tr>
+        <tr>
+          <td>
+          Transacciones históricas:
+          </td>
+          <td> {datosVendedor.seller_reputation.transactions.total}</td>
+        </tr>
+        <tr>
+          <td>
+          Mercado Envíos:
+          </td>
+          <td>{datosVendedor.status.mercadoenvios}</td>
+        </tr>
+        <tr>
+          <td>
+          Tipo de cuenta:
+          </td>
+          <td>{datosVendedor.status.mercadopago_account_type}</td>
+        </tr>
+        <tr>
+          <td>
+          Mercado Pago:
+          </td>
+          <td>{datosVendedor.status.mercadopago_tc_accepted ? 'Aceptado' : 'No Aceptado'}</td>
+        </tr>
+        <tr>
+          <td>
+          Foto:
+          </td>
+          <td> <img src={datosVendedor.thumbnail.picture_url} width={100}></img></td>
+        </tr>
+      </table>
 
-      <li>
-        Nombre: {datosVendedor.first_name}
-      </li>
-      <li>
-        Apellido: {datosVendedor.last_name}
-      </li>
-      <li>
-        Identificación: {datosVendedor.identification.number}
-      </li>
-      <li>
-        Puntos: {datosVendedor.points} 
-      </li>
 
-      <li>
-        Metricas cancelaciones: Periodo {datosVendedor.seller_reputation.metrics.cancellations.period} %  {datosVendedor.seller_reputation.metrics.cancellations.rate} cantidad {datosVendedor.seller_reputation.metrics.cancellations.value }
-      </li>
-      <li>
-        Metricas reclamos: Periodo {datosVendedor.seller_reputation.metrics.claims.period} %  {datosVendedor.seller_reputation.metrics.claims.rate} cantidad {datosVendedor.seller_reputation.metrics.claims.value }
-      </li>
-      <li>
-        Metricas demoras: Periodo {datosVendedor.seller_reputation.metrics.delayed_handling_time.period} %  {datosVendedor.seller_reputation.metrics.delayed_handling_time.rate} cantidad {datosVendedor.seller_reputation.metrics.delayed_handling_time.value }
-      </li>
-      <li>
-        Metricas ventas: Periodo {datosVendedor.seller_reputation.metrics.sales.period} completadas  {datosVendedor.seller_reputation.metrics.sales.completed}
-      </li>
-      <li>
-        Operaciones: Período {datosVendedor.seller_reputation.transactions.period} Canceladas {datosVendedor.seller_reputation.transactions.canceled} completadas  {datosVendedor.seller_reputation.transactions.completed} 
-      </li>
-      <li>
-        Calificaciones: Negativas {datosVendedor.seller_reputation.transactions.ratings.negative} Neutrales {datosVendedor.seller_reputation.transactions.ratings.neutral} Positivas  {datosVendedor.seller_reputation.transactions.ratings.positive} Total {datosVendedor.seller_reputation.transactions.ratings.total}
-      </li>
-      <li>
-        Estado del vendedor:  {datosVendedor.seller_reputation.metrics.power_seller_status} 
-      </li>
-      <li>
-      Transacciones históricas: {datosVendedor.seller_reputation.transactions.total}
-      </li>
-      <li>
-      Mercado Envíos: {datosVendedor.status.mercadoenvios}
-      </li>
-      <li>
-      Tipo de cuenta: {datosVendedor.status.mercadopago_account_type}
-      </li>
-      <li>
-      Mercado Pago: {datosVendedor.status.mercadopago_tc_accepted ? 'Aceptado' : 'No Aceptado'}
-      </li>
-      <li><img src={datosVendedor.thumbnail.picture_url}></img> </li>
-  </ul>
+
     )}
-    </div>
+    </div> 
 </>
   );
 }

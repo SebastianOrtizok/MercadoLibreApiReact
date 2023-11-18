@@ -7,6 +7,7 @@ function Paginacion({ totalResultados, resultadosPorPagina, paginaActual, cambia
   // Calcula el rango de páginas que se mostrarán (de 10 en 10)
   const rangoInicio = (Math.floor((paginaActual - 1) / 10) * 10) + 1;
   const rangoFin = Math.min(rangoInicio + 9, totalPaginas);
+  
 
   return (
     <ul className="paginacion-horizontal">
@@ -20,6 +21,7 @@ function Paginacion({ totalResultados, resultadosPorPagina, paginaActual, cambia
         </button>
       </li>
     ))}
+
   </ul>
   
   );

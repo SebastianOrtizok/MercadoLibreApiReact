@@ -141,3 +141,10 @@ margin: 0px 1px 0px 1px;
   justify-content: space-between;
   align-items: stretch;
 }
+
+.vendedor {
+  display: flex;
+  background-color: #00cccc;
+  margin: 0.5rem;
+  justify-content: center;
+}

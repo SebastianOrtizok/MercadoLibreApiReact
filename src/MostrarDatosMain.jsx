@@ -1,4 +1,4 @@
-import { useState , useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ExportToExcel from './ExportToExcel';
 import DolarHoy from './DolarHoy';
 import Filtro from './Filtro';
@@ -6,28 +6,35 @@ import Filtro from './Filtro';
 function MostrarDatosMain(props) {
   const { productos } = props;
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
+  const [filtros, setFiltros] = useState({
+    category: 'all',
+    minPrice: 0,
+    catalogo: 'all',
+    ventas: 0,
+  });
 
   useEffect(() => {
-    setProductosFiltrados(productos);
-  }, [productos]);
-
-  // Función para manejar los cambios en los filtros
-  const handleFilterChange = (nuevosFiltros) => {
-    // Actualizamos el estado con los nuevos filtros
+    // Actualizar productos filtrados al cambiar la lista de productos
     setProductosFiltrados(
       productos.filter(producto => {
         return (
-          (nuevosFiltros.category === "all" || producto.category_id === nuevosFiltros.category) &&
-          (nuevosFiltros.minPrice <= producto.price) &&
-          (nuevosFiltros.catalogo === "all" || nuevosFiltros.catalogo === producto.catalog_listing.toString()) &&
-          (nuevosFiltros.ventas <= producto.sold_quantity)
+          (filtros.category === 'all' || producto.category_id === filtros.category) &&
+          (filtros.minPrice <= producto.price) &&
+          (filtros.catalogo === 'all' || filtros.catalogo === producto.catalog_listing.toString()) &&
+          (filtros.ventas <= producto.sold_quantity)
         );
       })
     );
+  }, [productos, filtros]);
+
+  // Función para manejar los cambios en los filtros
+  const handleFilterChange = (nuevosFiltros) => {
+    // Actualizar el estado de los filtros
+    setFiltros(nuevosFiltros);
   };
 
+  let i = 0;
 
-let i=0
   return (
     <>
       <div className='contenedorPrincipal'>
@@ -56,11 +63,21 @@ let i=0
           <thead>
             <tr>
               <th className="text-center">Vendedor</th>
-              <th className="text-center">Ventas</th>
-              <th className="text-center">Cancelaciones</th>
-              <th className="text-center">Reclamos</th>
-              <th className="text-center">Cancelaciones<p>históricas</p></th>
-              <th className="text-center">Ventas <p>históricas</p></th>
+              <th className="text-center">Ventas <p>{productos[0]?.seller?.seller_reputation?.metrics?.sales?.period
+}</p></th>
+              <th className="text-center">Cancelaciones <p>
+              {productos[0]?.seller?.seller_reputation?.metrics?.cancellations?.period}
+              </p></th>
+              <th className="text-center">Reclamos <p>
+              {productos[0]?.seller?.seller_reputation?.metrics?.claims?.period}
+              </p></th>
+              <th className="text-center">Cancelaciones<p>
+              {productos[0]?.seller?.seller_reputation?.transactions?.period
+}
+              </p></th>
+              <th className="text-center">Ventas <p>
+              {productos[0]?.seller?.seller_reputation?.transactions?.period}
+              </p></th>
               <th className="text-center">Calidad <p>de vendedor</p></th>
             </tr>
           </thead>
@@ -141,4 +158,3 @@ let i=0
 }
 
 export default MostrarDatosMain;
-
