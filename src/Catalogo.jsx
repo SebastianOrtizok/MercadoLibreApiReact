@@ -14,7 +14,7 @@ function Catalogo() {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${"APP_USR-7650143381075360-111816-6812d40848645af9292dfcf740d8f8fa-65494552"}`,
+            Authorization: `Bearer ${"APP_USR-7650143381075360-111918-7eccb15a820b8e8e6c2e057e6175b264-65494552"}`,
           },
         });
 
@@ -29,7 +29,6 @@ function Catalogo() {
     fetchResultados();
   }, []);
 
-  let total=0
 
   console.log(datosCatalogo);
 
@@ -37,7 +36,7 @@ function Catalogo() {
 <div className='contenedorTablaPrincipal'>
       {datosCatalogo && (
         <>
-          <table>
+          <table className='tablecategorias'>
             <thead>
               <tr>
                 <th className="text-center">IMAGEN</th>
@@ -53,24 +52,25 @@ function Catalogo() {
               </tr>
             </tbody>
           </table>
+<div className='categorias'>
+          {datosCatalogo.children_categories.map((datoSubCategoria) => (
+  <table className='tablecategorias' key={datoSubCategoria.id}>
+    <thead>
+      <tr>
+        <th className="text-center">CATEGORIAS HIJAS </th>
+        <th className="text-center"><p>ITEMS EN CATEGORIA</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{datoSubCategoria.name}</td>
+        <td>{datoSubCategoria.total_items_in_this_category}</td>
+      </tr>
+    </tbody>
+  </table>
+))}
+</div>
 
-          <table>
-            <thead>
-              <tr>
-                <th className="text-center">CATEGORIAS HIJAS </th>
-                <th className="text-center"><p>ITEMS EN CATEGORIA</p></th>
-              </tr>
-            </thead>
-            {datosCatalogo.children_categories.map((datoSubCategoria) => (
-              <tbody key={datoSubCategoria.id}>
-                <tr>
-                  <td>{datoSubCategoria.name}</td>
-                  <td>{datoSubCategoria.total_items_in_this_category}</td>
-                </tr>
-               </tbody>
-
-            ))}
-          </table>
         </>
       )}
     </div>

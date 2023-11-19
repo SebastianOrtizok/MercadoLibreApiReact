@@ -95,9 +95,9 @@ function MostrarDatosMain(props) {
             </tr>
           </tbody>
         </table>
-
-        <DolarHoy />
+    <DolarHoy />
       </div>
+
 
       <div>
         <button>

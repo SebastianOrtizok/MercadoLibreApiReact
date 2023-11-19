@@ -1,6 +1,6 @@
 .contenedorPrincipal {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+flex-wrap: wrap;
   justify-content: center;
   justify-items: center;
   background-color: antiquewhite;
@@ -9,8 +9,8 @@
 
 .dolarHoy{
   font-family: "Arial";
-  grid-column: span 2;
-  font-size: 0.6rem;
+  font-size: 1rem;
+  width: 100%;
 }
 
 .contenedorTablaPrncipal{
@@ -35,15 +35,15 @@
 .contenedorTablaPrincipal tr:hover td {
   color: #555;
 }
-.contenedorTablaPrincipal th,
-.contenedorTablaPrincipal td {
-  width: 200px;
+
+
+.contenedorTablaPrincipal th, .contenedorTablaPrincipal td {
+  width: 100%;
   color: #999;
   border: 1px solid #eee;
   padding: 0.5rem 0.7rem;
   border-collapse: collapse;
   text-align: center;
-  
 }
 
 .titulo {
@@ -67,7 +67,7 @@
 
 .tableVendedor{
   font-family: "Arial";
-  margin: 0.1rem auto;
+  margin: 1rem;;
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid #eee;
@@ -88,7 +88,7 @@
 
 .tableVendedor2{
   font-family: "Arial";
-  margin: 0.1rem auto;
+  margin: 1rem;
   table-layout: fixed;
   border-collapse: collapse;
   border: 1px solid #eee;
@@ -103,7 +103,6 @@
   color: #fff;
   text-transform: uppercase;
   font-size: 10px;
-
 }
 
 .Vendedores_contendor{
@@ -113,6 +112,25 @@
   text-align: center;
 }
 
+.categorias{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tablecategorias{
+  font-family: "Arial";
+  width:40%;
+  padding: 2rem;
+  height: 200px;
+  margin: 1rem;;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  background-color: #fff;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
 
 .BuscarProductos{
   margin: 1rem;
@@ -137,9 +155,10 @@
 .filtro {
   display: flex;
   background-color: #00cccc;
-margin: 0px 1px 0px 1px;
-  justify-content: space-between;
+  margin: 0px 3px 0 0px;
+  justify-content: space-around;
   align-items: stretch;
+  flex-wrap: wrap;
 }
 
 .vendedor {
@@ -147,4 +166,46 @@ margin: 0px 1px 0px 1px;
   background-color: #00cccc;
   margin: 0.5rem;
   justify-content: center;
+}
+
+@media (max-width: 650px) {
+  table {
+    width: 100%;
+    margin: 10px;
+    padding: 0;
+    margin: 0;
+  }
+
+  thead {
+    display: none;
+  }
+
+  .contenedorTablaPrincipal th, .contenedorTablaPrincipal td {
+    width: 100%;
+    color: #999;
+    border: 1px solid #eee;
+    padding: 0.5rem 0.7rem;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+  tr {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width:100%;
+  }
+  
+  th {
+    display: none;
+    width:100%;
+  }
+
+ td {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center;
+    align-items: center;
+  }
 }
