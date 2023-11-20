@@ -107,7 +107,7 @@ function MostrarDatosMain(props) {
         <div className='contenedorTablaPrincipal'>
           {/* Contenido de la tabla principal */}
           <Filtro onFilterChange={handleFilterChange} />
-          <table>
+          <table className='tableprincipal'>
             <thead>
 
               <tr>

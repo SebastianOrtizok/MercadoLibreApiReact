@@ -36,7 +36,7 @@ function Catalogo() {
 <div className='contenedorTablaPrincipal'>
       {datosCatalogo && (
         <>
-          <table className='tablecategorias'>
+          <table className='tablecategoriasgral'>
             <thead>
               <tr>
                 <th className="text-center">IMAGEN</th>

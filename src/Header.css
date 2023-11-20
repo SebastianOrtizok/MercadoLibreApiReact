@@ -121,6 +121,12 @@ nav li i{
 .menu-h nav ul a  {
   color: #00CCCC; 
   text-decoration: none; 
+}
 
+.menu-h   {
+  color: #00CCCC; 
+  text-decoration: none; 
+box-shadow: 3px 3px 7px rgb(133, 133, 133);
+margin-bottom: 10px;
 }
 

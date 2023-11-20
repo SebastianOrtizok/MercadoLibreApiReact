@@ -37,47 +37,49 @@ function Vendedor() {
 <div className='contenedorTablaPrincipal'>
     {datosVendedor && (
       <table>
-        <tr>
+      <tr>
+      <td>
+      Usuario: {datosVendedor.nickname}
+      </td>
+        <td>
+        <img src={datosVendedor.thumbnail.picture_url} width={100}></img>
+        </td>
+      </tr>
+      <tr>
+          <td>Tipo de cuenta: {datosVendedor.status.mercadopago_account_type}</td>
           <td>
-          Nombre:
-          </td>
-          <td>{datosVendedor.nickname}</td>
-        </tr>
-        <tr>
-          <td>
-          Tipo de usuario:
-          </td>
-          <td>{datosVendedor.user_type}</td>
-        </tr>
-        <tr>
+          Tipo de usuario: {datosVendedor.user_type}
+          </td>  
+         </tr>
+         <tr>
           <td>
           Fecha de alta:
           </td>
-          <td>{datosVendedor.registration_date} </td>
+          <td>{Date(datosVendedor.registration_date)} </td>
+          </tr>
+        <tr>
+        <td>
+          Teléfono:
+          </td>
+          <td>Cod.Area: {datosVendedor.phone.area_code} Ext: {datosVendedor.phone.extension} nro: {datosVendedor.phone.number}</td>
+        </tr>
+        <tr>
         </tr>
         <tr>
           <td>
           Dirección:
           </td>
-          <td>{datosVendedor.address.address}</td>
+          <td>{datosVendedor.address.address}  {datosVendedor.address.city}</td>
         </tr>
         <tr>
-          <td>
-          Dirección:
-          </td>
-          <td>{datosVendedor.address.city}</td>
-        </tr>
-        <tr>
-          <td>
+        <td>
           Código Postal:
           </td>
           <td> {datosVendedor.address.zip_code}</td>
         </tr>
+
         <tr>
-          <td>
-          Teléfono:
-          </td>
-          <td>Cod.Area: {datosVendedor.phone.area_code} Ext: {datosVendedor.phone.extension} nro: {datosVendedor.phone.number}</td>
+          
         </tr>
         <tr>
           <td>
@@ -169,23 +171,12 @@ function Vendedor() {
           </td>
           <td>{datosVendedor.status.mercadoenvios}</td>
         </tr>
-        <tr>
-          <td>
-          Tipo de cuenta:
-          </td>
-          <td>{datosVendedor.status.mercadopago_account_type}</td>
-        </tr>
+
         <tr>
           <td>
           Mercado Pago:
           </td>
           <td>{datosVendedor.status.mercadopago_tc_accepted ? 'Aceptado' : 'No Aceptado'}</td>
-        </tr>
-        <tr>
-          <td>
-          Foto:
-          </td>
-          <td> <img src={datosVendedor.thumbnail.picture_url} width={100}></img></td>
         </tr>
       </table>
 
