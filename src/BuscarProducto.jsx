@@ -77,14 +77,12 @@ function BuscarProductos() {
       <button onClick={handleBuscar}>Buscar</button>
       <div className='contenedorTablaPrincipal'>
       <Filtro onFilterChange={handleFilterChange} />
-      <table>
+      <table className='tableprincipal'>
         <thead>
           <tr>
           <th className="text-center">IMAGEN</th>
-          <th className="text-center">CAT ID</th>
             <th className="text-center">CATEGORIA</th>
-            <th className="text-center">PUBLICACION</th>
-            <th className="text-center">ENVIO</th>
+            <th className="text-center">Condicion / envio</th>
             <th className="text-center">CALIDAD</th>
             <th className="text-center">TITULO</th>
             <th className="text-center">PRECIO</th>
@@ -99,22 +97,16 @@ function BuscarProductos() {
           {productosFiltrados.map((producto) => (
             <tr key={producto.id}>
               <td><img src={producto.thumbnail}></img> </td>
-              <td>{producto.category_id}</td>
-              <td>{producto.domain_id}</td> 
-              <td>{producto.catalog_product_id}
-              <p>{producto.condition}</p></td>
-            <td>{producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
+              <td>{producto.category_id}{producto.domain_id}{producto.catalog_product_id}</td> 
+              <td>{producto.condition} / {producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
               <td>{producto.seller.seller_reputation.power_seller_status}</td>
               <td>{producto.title}</td>
               <td>$ {producto.price}</td>
               <td><a href={producto.permalink} target="_blank" rel="noopener noreferrer">Link</a></td>
               <td>{producto.available_quantity}</td>
               <td>{producto.listing_type_id}</td> 
-              <td>{producto.catalog_listing ? "EN CATALOGO" : "SIN CATALOGO"}
-              <p>{producto.winner_item_id ? "GANANDO" : "PERDIENDO"}</p>
+              <td>{producto.catalog_listing ? "SI" : "NO"}
               {/* <Catalogo catalogProductId={producto.catalog_product_id} /> */}
-              <p>{producto.catalog_product_id}</p>
-
               </td>
               <td>{producto.sold_quantity}</td>
              </tr>

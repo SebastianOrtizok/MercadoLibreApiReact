@@ -44,6 +44,7 @@ flex-wrap: wrap;
 }
 
 
+
 .contenedorTablaPrincipal th, .contenedorTablaPrincipal td {
   width: 100%;
   color: #999;
@@ -125,7 +126,7 @@ flex-wrap: wrap;
 }
 
 .Vendedores_contendor{
-  padding: 1rem;
+  padding: 5rem 1rem 1rem 1rem;
   background-color: antiquewhite;
   align-items: center;
   text-align: center;

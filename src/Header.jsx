@@ -33,10 +33,16 @@ function Header() {
    Vendedor
             </li>
             </Link>
+            <Link to="/categorias">
+            <li>
+              <i className="fa fa-credit-card"></i>
+              Categorías
+            </li>
+            </Link>
             <Link to="/catalogo">
             <li>
               <i className="fa fa-credit-card"></i>
-              Catálogo
+              Catalogo
             </li>
             </Link>
             <Link to="/buscar">

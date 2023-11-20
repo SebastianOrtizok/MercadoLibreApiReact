@@ -5,7 +5,7 @@ import Vendedores from "./Vendedores";
 import Paginacion from "./Paginacion";
 
 const accessToken =
-  "APP_USR-7650143381075360-100510-4c6c367756352433dc0b1090097b5a55-65494552";
+  "APP_USR-7650143381075360-112009-a45845125db4e4bb22def038b7b974b3-65494552";
 const apiUrlBase = "https://api.mercadolibre.com/sites/MLA/search?nickname=";
 
 

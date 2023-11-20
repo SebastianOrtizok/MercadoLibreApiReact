@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Mercadolibreapi from "./Mercadolibreapi";
 import Vendedor from "./Vendedor";
-import Catalogo from "./Catalogo";
+import Categorias from './Categorias';
 import BuscarProductos from "./BuscarProducto";
 import Header from "./Header";
 import "./App.css";
-import ObtenerAccessToken from "./ObtenerAccesToken";
+import Catalogo from './Catalogo';
+// import ObtenerAccessToken from "./ObtenerAccesToken";
 
 function App() {
 	return (
@@ -17,9 +18,9 @@ function App() {
 				<Header />
 				<Routes>
 					<Route path="/" element={<Mercadolibreapi />} />
-					<Route path="/accesstoken" element={<ObtenerAccessToken />} />
 					<Route path="/vendedor" element={<Vendedor />} />
-					<Route path="/catalogo" element={<Catalogo />} />
+					<Route path="/categorias" element={<Categorias />} />
+					<Route path="/Catalogo" element={<Catalogo />} />
 					<Route path="/buscar" element={<BuscarProductos />} />
 					<Route path="*" element={<NotFound />} />
 					<Route index element={<Mercadolibreapi />} />

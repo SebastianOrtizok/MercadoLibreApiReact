@@ -84,6 +84,7 @@ const Filtro = ({ onFilterChange }) => {
         max="1000"
         onChange={handelChangeVendidos}
         value={filtro.ventas}
+        className='filtroRange'
       />{filtro.ventas}
       </div>
     </div>

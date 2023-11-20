@@ -12,7 +12,7 @@ function Vendedor() {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${"APP_USR-7650143381075360-111918-7eccb15a820b8e8e6c2e057e6175b264-65494552"}`,
+            Authorization: `Bearer ${"APP_USR-7650143381075360-112009-a45845125db4e4bb22def038b7b974b3-65494552"}`,
           },
         });
 
