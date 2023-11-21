@@ -1,8 +1,8 @@
-const refreshToken = async () => {
+const ObtenerAccesToken = async () => {
   const url = 'https://api.mercadolibre.com/oauth/token';
   const clientId = '7650143381075360';
   const clientSecret = '5SQCr1FJskKmTCW5R7T6mi7Xph6zZIQc';
-  const refreshTokenValue = 'TG-655b647cd22a8100017b84f6-65494552';
+  const refreshTokenValue = 'TG-655be65681c20700014c3dae-65494552';
 
   try {
     const response = await fetch(url, {
@@ -20,6 +20,11 @@ const refreshToken = async () => {
     });
 
     const data = await response.json();
+
+    // Guarda los tokens en localStorage
+    localStorage.setItem('accessToken', data.access_token);
+    localStorage.setItem('refreshToken', data.refresh_token);
+
     console.log('Token actualizado:', data);
     return data;
   } catch (error) {
@@ -28,6 +33,8 @@ const refreshToken = async () => {
 };
 
 // Llama a la función para actualizar el token
-refreshToken();
+ObtenerAccesToken();
+
+export default ObtenerAccesToken;
 
 

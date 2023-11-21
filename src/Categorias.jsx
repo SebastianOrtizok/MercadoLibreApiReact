@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
+let access_token =  localStorage.getItem('accessToken');
+
 function Categorias() {
   const [datosCatalogo, setDatosCatalogo] = useState();
 
@@ -14,7 +16,7 @@ function Categorias() {
         const response = await fetch(url, {
           method: 'GET',
           headers: {
-            Authorization: `Bearer ${"APP_USR-7650143381075360-112009-a45845125db4e4bb22def038b7b974b3-65494552"}`,
+            Authorization: `Bearer ${access_token}`,
           },
         });
 

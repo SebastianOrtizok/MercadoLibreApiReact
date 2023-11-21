@@ -14,6 +14,7 @@ flex-wrap: wrap;
 }
 
 .contenedorTablaPrincipal {
+  padding-top: 2.5rem;
   font-family: "Arial";
   table-layout: fixed;
   width: 98%;
@@ -161,7 +162,7 @@ flex-wrap: wrap;
 
 .BuscarProductos{
   margin: 1rem;
-  padding: 1rem;
+  padding: 2.5rem 1rem 1rem 1rem;
   background-color: antiquewhite;
 }
 

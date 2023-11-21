@@ -9,47 +9,49 @@ function Header() {
     setMenuOpen(!menuOpen);
   };
 
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <>
       <div className={`menu-h ${menuOpen ? 'menu-open' : ''}`}>
         <button className="js-menu menu" onClick={toggleMenu} type="button">
           <span className="bar"></span>
         </button>
-        <nav>
+        <nav onMouseLeave={toggleMenu}>
           <h2>JavascriptSolutions</h2>
-          <span>
-            Consumiendo api ML
-          </span>
+          <span>Consumiendo api ML</span>
           <ul>
-          <Link to="/">
-            <li>
-              <i className="fa fa-home"></i>
-             Home
-            </li>
+            <Link to="/" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-home"></i> Home
+              </li>
             </Link>
-            <Link to="/vendedor">
-            <li>
-              <i className="fa fa-wpforms"></i>
-   Vendedor
-            </li>
+            <Link to="/vendedor" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-wpforms"></i> Vendedor
+              </li>
             </Link>
-            <Link to="/categorias">
-            <li>
-              <i className="fa fa-credit-card"></i>
-              Categorías
-            </li>
+            <Link to="/categorias" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-credit-card"></i> Categorías
+              </li>
             </Link>
-            <Link to="/catalogo">
-            <li>
-              <i className="fa fa-credit-card"></i>
-              Catalogo
-            </li>
+            <Link to="/catalogo" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-credit-card"></i> Catalogo
+              </li>
             </Link>
-            <Link to="/buscar">
-            <li>
-              <i className="fa fa-credit-card"></i>
-              BuscarProducto
-            </li>
+            <Link to="/buscar" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-credit-card"></i> BuscarProducto
+              </li>
+            </Link>
+            <Link to="/acces" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-credit-card"></i>Acceso
+              </li>
             </Link>
           </ul>
         </nav>

@@ -9,7 +9,7 @@ import BuscarProductos from "./BuscarProducto";
 import Header from "./Header";
 import "./App.css";
 import Catalogo from './Catalogo';
-// import ObtenerAccessToken from "./ObtenerAccesToken";
+import ObtenerAccesToken from './ObtenerAccesToken';
 
 function App() {
 	return (
@@ -22,6 +22,7 @@ function App() {
 					<Route path="/categorias" element={<Categorias />} />
 					<Route path="/Catalogo" element={<Catalogo />} />
 					<Route path="/buscar" element={<BuscarProductos />} />
+					<Route path="/acces" element={<ObtenerAccesToken />} />
 					<Route path="*" element={<NotFound />} />
 					<Route index element={<Mercadolibreapi />} />
 				</Routes>
