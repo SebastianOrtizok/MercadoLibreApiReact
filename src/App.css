@@ -134,6 +134,7 @@ flex-wrap: wrap;
 }
 
 .categorias {
+  padding-top: 4rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -194,6 +195,7 @@ flex-wrap: wrap;
   margin: 0.5rem;
   justify-content: center;
 }
+
 
 @media (max-width: 800px) {
   table {
