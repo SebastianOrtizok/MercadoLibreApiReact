@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { FetchCatalogo } from './FetchCatalo';
 
 let access_token = "APP_USR-7650143381075360-112122-482eebdc0434fdf7668dc554ca01c473-65494552";
 

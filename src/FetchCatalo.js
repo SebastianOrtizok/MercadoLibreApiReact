@@ -4,7 +4,7 @@ export const FetchCatalogo = async () => {
     const limit = 50;
     let offset = 0;
     let allResults = [];
-    let loop=true
+    let loop=false
   
     try {
       while (loop == true) {
