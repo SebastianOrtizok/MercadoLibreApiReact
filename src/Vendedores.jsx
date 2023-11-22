@@ -13,7 +13,7 @@ function Vendedores({ onVendedorChange  }) {
 		<span>Seleccione vendedor </span>
         <select name="vendedor" id="vendedor" onChange={handleVendedorChange}>
 		<option value="ITECOM DIGITAL">ITECOM DIGITAL</option>
-		<option value="Mercado Libre Electrónica">MERCADO LIBRE ELECTRÓNICA</option>
+		<option value="MERCADOLIBRE ELECTRONICA_AR">MERCADO LIBRE ELECTRÓNICA</option>
 		<option value="ALTATIENDA">ALTATIENDA</option>
 	<option value="IPOINT">IPOINT</option>
         <option value="MADISON_TECNO">MADISON_TECNO</option>

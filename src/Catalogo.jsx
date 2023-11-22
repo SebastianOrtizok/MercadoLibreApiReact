@@ -107,6 +107,7 @@ function Catalogo() {
               <th><h3>Precio</h3></th>
               <th><h3>Vendedor</h3></th>
               <th><h3>Vendidas</h3></th>
+              <th><h3>Link</h3></th>
             </tr>
           </thead>
           <tbody>
@@ -117,6 +118,7 @@ function Catalogo() {
    <td> {datos.price}</td>
    <td> {datos.seller.nickname}</td>
    <td> {datos.sold_quantity}</td>
+   <td>   <a href={datos.permalink} target="_blank" rel="noopener noreferrer">Link</a> </td>
               </tr>
 ))}
           </tbody>
