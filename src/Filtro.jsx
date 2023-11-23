@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const Filtro = ({ onFilterChange }) => {
   const [filtro, setFiltro] = useState({
     category: "all",
+    buscador: "",
     minPrice: 0,
     catalogo: "all",
     ventas: 0
@@ -15,6 +16,8 @@ const Filtro = ({ onFilterChange }) => {
       minPrice: minPrice
     });
   };
+
+
   
   const handelChangeVendidos = (event) => {
     const ventasHechas = event.target.value;
@@ -31,6 +34,12 @@ const Filtro = ({ onFilterChange }) => {
       category: filtroCategoria
     });
   };
+
+  const busqueda = (event) => {
+    const busqueda = event.target.value
+    setFiltro ({...filtro,
+      buscador: busqueda})
+  }
 
   const filtrarCatalogo = (event) => {
     const filtroEnCatalogo = event.target.value;
@@ -56,6 +65,17 @@ const Filtro = ({ onFilterChange }) => {
         <option value="MLA1652">Notebooks</option>
       </select>
 </div>
+ <div>
+ <input
+  type="text"
+  value={filtro.buscador}
+  onChange={(event) => busqueda(event)}
+  placeholder="Buscar productos..."
+/>
+
+
+
+    </div>
 <div>
       <label>Catalogo:</label>
       <select onChange={filtrarCatalogo} value={filtro.catalogo}>

@@ -12,6 +12,9 @@ function Header() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+  const menuoff = ()=>{
+    setMenuOpen(!menuOpen);
+  }
 
   return (
     <>
@@ -19,7 +22,7 @@ function Header() {
         <button className="js-menu menu" onClick={toggleMenu} type="button">
           <span className="bar"></span>
         </button>
-        <nav onMouseLeave={toggleMenu}>
+        <nav onMouseLeave={menuoff}>
           <h2>JavascriptSolutions</h2>
           <span>Consumiendo api ML</span>
           <ul>
@@ -41,6 +44,11 @@ function Header() {
             <Link to="/catalogo" onClick={closeMenu}>
               <li>
                 <i className="fa fa-credit-card"></i> Catalogo
+              </li>
+            </Link>
+            <Link to="/catalog" onClick={closeMenu}>
+              <li>
+                <i className="fa fa-credit-card"></i> Catalog
               </li>
             </Link>
             <Link to="/buscar" onClick={closeMenu}>

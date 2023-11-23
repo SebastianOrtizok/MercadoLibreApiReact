@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import ExportToExcel from './ExportToExcel';
 import DolarHoy from './DolarHoy';
 import Filtro from './Filtro';
@@ -8,6 +8,7 @@ function MostrarDatosMain(props) {
   const [productosFiltrados, setProductosFiltrados] = useState(productos);
   const [filtros, setFiltros] = useState({
     category: 'all',
+    buscador: "",
     minPrice: 0,
     catalogo: 'all',
     ventas: 0,
@@ -17,14 +18,18 @@ function MostrarDatosMain(props) {
     // Actualizar productos filtrados al cambiar la lista de productos
     setProductosFiltrados(
       productos.filter(producto => {
+        console.log(producto.title + "" + filtros.buscador )
         return (
           (filtros.category === 'all' || producto.category_id === filtros.category) &&
           (filtros.minPrice <= producto.price) &&
           (filtros.catalogo === 'all' || filtros.catalogo === producto.catalog_listing.toString()) &&
-          (filtros.ventas <= producto.sold_quantity)
+          (filtros.ventas <= producto.sold_quantity) &&
+          producto.title.toLowerCase().includes(filtros.buscador)
         );
       })
     );
+    
+    
   }, [productos, filtros]);
 
   // Función para manejar los cambios en los filtros

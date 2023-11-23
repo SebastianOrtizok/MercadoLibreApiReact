@@ -9,6 +9,7 @@ import BuscarProductos from "./BuscarProducto";
 import Header from "./Header";
 import "./App.css";
 import Catalogo from './Catalogo';
+import Catalog from './Catalog';
 import ObtenerAccesToken from './ObtenerAccesToken';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 					<Route path="/vendedor" element={<Vendedor />} />
 					<Route path="/categorias" element={<Categorias />} />
 					<Route path="/Catalogo" element={<Catalogo />} />
+					<Route path="/Catalog" element={<Catalog />} />
 					<Route path="/buscar" element={<BuscarProductos />} />
 					<Route path="/acces" element={<ObtenerAccesToken />} />
 					<Route path="*" element={<NotFound />} />

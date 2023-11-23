@@ -123,6 +123,25 @@ function Catalogo() {
 ))}
           </tbody>
           </table>
+
+          <table>
+          <thead>
+            <tr>
+              <th>
+                <h2>Marca</h2>
+              </th>
+              <th><h3>Cantidad</h3></th>
+            </tr>
+          </thead>
+          <tbody>
+          {datosCategoria.available_filters[15]?.values.map((datos) => (
+           <tr key={datos.index}>
+           <td  >{datos.name}</td>
+  <td  > {datos.results}</td>
+      </tr>
+))}
+          </tbody>
+          </table>
           </div>
           
       </div>
