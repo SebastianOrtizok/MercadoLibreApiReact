@@ -33,17 +33,17 @@ function Header() {
             </Link>
             <Link to="/vendedor" onClick={closeMenu}>
               <li>
-                <i className="fa fa-wpforms"></i> Vendedor
+                <i className="fa fa-user"></i> Vendedor
               </li>
             </Link>
             <Link to="/categorias" onClick={closeMenu}>
               <li>
-                <i className="fa fa-credit-card"></i> Categorías
+                <i className="fa fa-table"></i> Categorías
               </li>
             </Link>
             <Link to="/catalogo" onClick={closeMenu}>
               <li>
-                <i className="fa fa-credit-card"></i> Catalogo
+                <i className="fa fa-clipboard"></i> Catalogo
               </li>
             </Link>
             <Link to="/catalog" onClick={closeMenu}>
@@ -53,7 +53,7 @@ function Header() {
             </Link>
             <Link to="/buscar" onClick={closeMenu}>
               <li>
-                <i className="fa fa-credit-card"></i> BuscarProducto
+                <i className="fa fa-search"></i> BuscarProducto
               </li>
             </Link>
             <Link to="/acces" onClick={closeMenu}>

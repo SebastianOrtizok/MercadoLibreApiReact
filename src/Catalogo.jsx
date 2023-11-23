@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 
-let access_token = "APP_USR-7650143381075360-112122-482eebdc0434fdf7668dc554ca01c473-65494552";
-
+let access_token="APP_USR-7650143381075360-112319-cb704e2d33cb4efa126cb8fd6e8ebb36-65494552"
 
 function Catalogo() {
   const [datosCategoria, setDatosCategoria] = useState({ results: [], available_filters: [], paging: {} });
