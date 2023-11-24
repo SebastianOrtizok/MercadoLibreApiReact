@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ExportToExcel from './ExportToExcel';
 import DolarHoy from './DolarHoy';
 import Filtro from './Filtro';
+import { Link } from 'react-router-dom';
 
 function MostrarDatosMain(props) {
   const { productos } = props;
@@ -135,7 +136,10 @@ function MostrarDatosMain(props) {
               {productosFiltrados.map(producto => (
                 <tr key={producto.id}>
                 <td><img src={producto.thumbnail} alt="Producto" />{i=i+1}</td>
-      <td>{producto.title}</td>
+      <td>{producto.title}
+      <p><Link to={`/catalog?titulo=${encodeURIComponent(producto.title)}`}>
+        <li>Catalog</li>
+      </Link></p></td>
       <td>
         {producto.category_id} <p>{producto.domain_id.slice(4,20)}</p>
       </td>

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 
-let access_token="APP_USR-7650143381075360-112319-cb704e2d33cb4efa126cb8fd6e8ebb36-65494552"
+let access_token =  localStorage.getItem('accessToken');
+// let access_token="APP_USR-7650143381075360-112319-cb704e2d33cb4efa126cb8fd6e8ebb36-65494552"
 
-function Catalogo() {
+function Categoria() {
   const [datosCategoria, setDatosCategoria] = useState({ results: [], available_filters: [], paging: {} });
 
   useEffect(() => {
@@ -148,4 +149,4 @@ function Catalogo() {
   );
 }
 
-export default Catalogo;
+export default Categoria;

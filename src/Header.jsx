@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
@@ -13,7 +13,7 @@ function Header() {
     setMenuOpen(false);
   };
   const menuoff = ()=>{
-    setMenuOpen(!menuOpen);
+    setMenuOpen(false);
   }
 
   return (
@@ -22,7 +22,7 @@ function Header() {
         <button className="js-menu menu" onClick={toggleMenu} type="button">
           <span className="bar"></span>
         </button>
-        <nav onMouseLeave={menuoff}>
+        <nav onClick={menuoff} onMouseLeave={menuoff}>
           <h2>JavascriptSolutions</h2>
           <span>Consumiendo api ML</span>
           <ul>
@@ -41,9 +41,9 @@ function Header() {
                 <i className="fa fa-table"></i> Categorías
               </li>
             </Link>
-            <Link to="/catalogo" onClick={closeMenu}>
+            <Link to="/categoria" onClick={closeMenu}>
               <li>
-                <i className="fa fa-clipboard"></i> Catalogo
+                <i className="fa fa-clipboard"></i> Categoria
               </li>
             </Link>
             <Link to="/catalog" onClick={closeMenu}>

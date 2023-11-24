@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-// let access_token =  localStorage.getItem('accessToken');
-let access_token="APP_USR-7650143381075360-112319-cb704e2d33cb4efa126cb8fd6e8ebb36-65494552"
+let access_token =  localStorage.getItem('accessToken');
+// let access_token="APP_USR-7650143381075360-112319-cb704e2d33cb4efa126cb8fd6e8ebb36-65494552"
 
 function Categorias() {
   const [datosCatalogo, setDatosCatalogo] = useState();

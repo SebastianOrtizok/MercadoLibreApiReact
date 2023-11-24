@@ -8,9 +8,10 @@ import Categorias from './Categorias';
 import BuscarProductos from "./BuscarProducto";
 import Header from "./Header";
 import "./App.css";
-import Catalogo from './Catalogo';
+import Categoria from './Categoria';
 import Catalog from './Catalog';
 import ObtenerAccesToken from './ObtenerAccesToken';
+
 
 function App() {
 	return (
@@ -21,7 +22,7 @@ function App() {
 					<Route path="/" element={<Mercadolibreapi />} />
 					<Route path="/vendedor" element={<Vendedor />} />
 					<Route path="/categorias" element={<Categorias />} />
-					<Route path="/Catalogo" element={<Catalogo />} />
+					<Route path="/categoria" element={<Categoria />} />
 					<Route path="/Catalog" element={<Catalog />} />
 					<Route path="/buscar" element={<BuscarProductos />} />
 					<Route path="/acces" element={<ObtenerAccesToken />} />
