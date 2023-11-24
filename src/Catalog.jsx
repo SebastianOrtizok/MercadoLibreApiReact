@@ -58,6 +58,7 @@ console.log(url)
               <tr>
                 <th className="text-center">IMAGEN</th>
                 <th className="text-center titulo">TITULO</th>
+                <th className="text-center titulo">VENDEDOR</th>
                 <th className="text-center"><p>CATEGORIA</p></th>
                 <th className="text-center">PUBLICACION</th>
                 <th className="text-center">ENVIO</th>
@@ -75,6 +76,7 @@ console.log(url)
                 <tr key={producto.id}>
                 <td><img src={producto.thumbnail} alt="Producto" width={100} /></td>
       <td>{producto.title}</td>
+      <td><p><strong>{producto.seller.nickname.slice(0,15)}</strong></p></td>
      <td>
         {producto.category_id} <p>{producto.domain_id.slice(4,20)}</p>
       </td>

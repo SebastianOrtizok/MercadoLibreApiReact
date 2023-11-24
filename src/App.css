@@ -115,7 +115,6 @@ flex-wrap: wrap;
 }
 
 .tableprincipal {
-  width: 100%;
   font-family: "Arial";
   table-layout: fixed;
   border-collapse: collapse;
