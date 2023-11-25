@@ -23,6 +23,7 @@ function Vendedores({ onVendedorChange  }) {
     <option value="MERCADOSITIO COM">MERCADOSITIO COM</option>
     <option value="PULPORTECH">PULPORTECH</option>
     <option value="PWIEVENTSSRL">PWIEVENTSSRL</option>
+	<option value="ITECOM DIGITAL">ITECOM DIGITAL</option>
 		<option value="ELECTRO-OUTLET">ELECTRO-OUTLET</option>
 		<option value="DINATECHONLINE">DINATECHONLINE</option>
 		<option value="OVERHARD">OVERHARD</option>
@@ -31,7 +32,9 @@ function Vendedores({ onVendedorChange  }) {
 		<option value="GETBOX">GETBOX</option>
 		<option value="JFCELECTRONICA">JFC ELECTRONICA</option>
 		<option value="TECNOCELLBALVANERA.BA">
+		<option value="TECNOCELLBALVANERA.BA"></option>
 		TECNOCELLBALVANERA.BA</option>
+		<option value="TIEBREACK">Patricio</option>
 		</select>
 	</div>
     )

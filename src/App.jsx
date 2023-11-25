@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
 import Mercadolibreapi from "./Mercadolibreapi";
 import Vendedor from "./Vendedor";
@@ -11,11 +9,16 @@ import "./App.css";
 import Categoria from './Categoria';
 import Catalog from './Catalog';
 import ObtenerAccesToken from './ObtenerAccesToken';
+// import { Mysql} from "./Mysql";
+
+// console.log (Mysql)
+
 
 
 function App() {
 	return (
 		<>
+
 			<BrowserRouter>
 				<Header />
 				<Routes>

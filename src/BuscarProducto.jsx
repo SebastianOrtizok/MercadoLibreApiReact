@@ -19,7 +19,7 @@ function BuscarProductos() {
     fetch(url, {
       method: 'GET',
       headers: {
-        Authorization: `Bearer ${ "APP_USR-7650143381075360-111511-c1949fe019e21816969c706da923d8d2-65494552"}`,
+        Authorization: `Bearer ${ "APP_USR-7650143381075360-112512-07817d42960317f28de537cf692b0585-65494552"}`,
       },
     })
       .then((response) => response.json())
