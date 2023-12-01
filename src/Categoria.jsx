@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 // let access_token =  localStorage.getItem('accessToken');
-let access_token="APP_USR-7650143381075360-112512-07817d42960317f28de537cf692b0585-65494552"
+let access_token="APP_USR-7650143381075360-112713-0470a4f7932d4e24f13314c56d230ba3-65494552"
 
 function Categoria() {
   const [datosCategoria, setDatosCategoria] = useState({ results: [], available_filters: [], paging: {} });

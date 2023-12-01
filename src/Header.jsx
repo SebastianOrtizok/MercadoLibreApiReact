@@ -25,8 +25,8 @@ function Header() {
         <nav onClick={menuoff} onMouseLeave={menuoff}>
           <h2>JavascriptSolutions</h2>
           <span>Consumiendo api ML</span>
-          <ul>
-            <Link to="/" onClick={closeMenu}>
+          <ul> 
+           <Link to="/" onClick={closeMenu}>
               <li>
                 <i className="fa fa-home"></i> Home
               </li>

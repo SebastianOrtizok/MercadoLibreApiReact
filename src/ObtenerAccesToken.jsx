@@ -2,7 +2,7 @@ const ObtenerAccesToken = async () => {
   const url = 'https://api.mercadolibre.com/oauth/token';
   const clientId = '7650143381075360';
   const clientSecret = '5SQCr1FJskKmTCW5R7T6mi7Xph6zZIQc';
-  const refreshTokenValue = 'TG-655be65681c20700014c3dae-65494552';
+  const refreshTokenValue = 'TG-656a43483c9f2100010b3780-65494552';
 
   try {
     const response = await fetch(url, {

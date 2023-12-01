@@ -8,7 +8,7 @@ import Header from "./Header";
 import "./App.css";
 import Categoria from './Categoria';
 import Catalog from './Catalog';
-import ObtenerAccesToken from './ObtenerAccesToken';
+// import ObtenerAccesToken from './ObtenerAccesToken';
 // import { Mysql} from "./Mysql";
 
 // console.log (Mysql)
@@ -17,8 +17,7 @@ import ObtenerAccesToken from './ObtenerAccesToken';
 
 function App() {
 	return (
-		<>
-
+<>
 			<BrowserRouter>
 				<Header />
 				<Routes>
@@ -28,7 +27,7 @@ function App() {
 					<Route path="/categoria" element={<Categoria />} />
 					<Route path="/Catalog" element={<Catalog />} />
 					<Route path="/buscar" element={<BuscarProductos />} />
-					<Route path="/acces" element={<ObtenerAccesToken />} />
+					{/* <Route path="/acces" element={<ObtenerAccesToken />} /> */}
 					<Route path="*" element={<NotFound />} />
 					<Route index element={<Mercadolibreapi />} />
 				</Routes>
