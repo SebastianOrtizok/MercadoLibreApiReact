@@ -1,55 +1,55 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 
 // let access_token =  localStorage.getItem('accessToken');
 
-let access_token =
-	"APP_USR-7650143381075360-120116-3417b9cc38f84ebf47f3c1ad8fa70b9b-83557935";
+let access_token="APP_USR-7650143381075360-120116-3417b9cc38f84ebf47f3c1ad8fa70b9b-83557935"
+
 
 function Vendedor() {
-	const [datosVendedor, setDatosVendedor] = useState();
+  const [datosVendedor, setDatosVendedor] = useState();
 
-	useEffect(() => {
-		const fetchResultados = async () => {
-			const url = `https://api.mercadolibre.com/users/83557935`;
-			console.log(url);
+  useEffect(() => {
+    const fetchResultados = async () => {
+      const url = `https://api.mercadolibre.com/users/83557935`;
+      console.log(url);
 
-			try {
-				const response = await fetch(url, {
-					method: "GET",
-					headers: {
-						Authorization: `Bearer ${access_token}`,
-					},
-				});
+      try {
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            Authorization: `Bearer ${access_token}`,
+          },
+        });
 
-				const data = await response.json();
-				setDatosVendedor(data);
-			} catch (error) {
-				console.error("Error al obtener información de la búsqueda:", error);
-			}
-		};
+        const data = await response.json();
+        setDatosVendedor(data);
+      } catch (error) {
+        console.error('Error al obtener información de la búsqueda:', error);
+      }
+    };
 
-		// Llama a la función al montar el componente
-		fetchResultados();
-	}, []);
+    // Llama a la función al montar el componente
+    fetchResultados();
+  }, []);
 
-	console.log("Acces Token pagina vendedor: ");
-	console.log(datosVendedor);
+  console.log("Acces Token pagina vendedor: ")
+  console.log(datosVendedor);
 
-	// Resto del componente...
+  // Resto del componente...
 
-	return (
-		<>
-			<h1>Patricio</h1>
-			{/* <div className='contenedorTablaPrincipal'>
+  return (
+<>
+<h1>Patricio</h1>
+<div className='contenedorTablaPrincipal'>
     {datosVendedor && (
       <table>
       <tr>
       <td>
       Usuario: {datosVendedor.nickname}
       </td>
-        <td>
+        {/* <td>
         <img src={datosVendedor.thumbnail.picture_url} width={100}></img>
-        </td>
+        </td> */}
       </tr>
       <tr>
           <td>Tipo de cuenta: {datosVendedor.status.mercadopago_account_type}</td>
@@ -189,9 +189,9 @@ function Vendedor() {
 
 
     )}
-    </div>  */}
-		</>
-	);
+    </div> 
+</>
+  );
 }
 
 export default Vendedor;
