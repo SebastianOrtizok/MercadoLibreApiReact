@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import MostrarDatosMain from "./MostrarDatosMain";
 import Vendedores from "./Vendedores";
 // import BuscarProducto from "./BuscarProducto";
@@ -39,7 +39,6 @@ function Mercadolibreapi() {
       }
 
       const productosData = await response.json();
-      console.log( productosData )
 
       setProductos(productosData.results);
       setPaginaTotal(productosData.paging.total);

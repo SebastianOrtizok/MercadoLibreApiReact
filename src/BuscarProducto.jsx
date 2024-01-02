@@ -99,7 +99,7 @@ function BuscarProductos() {
               <td><img src={producto.thumbnail}></img> </td>
               <td>{producto.category_id}{producto.domain_id}{producto.catalog_product_id}</td> 
               <td>{producto.condition} / {producto.shipping.logistic_type}{producto.shipping.free_shipping}</td>
-              <td>{producto.seller.seller_reputation.power_seller_status}</td>
+              {/* <td>{producto.seller.seller_reputation.power_seller_status}</td> */}
               <td>{producto.title}</td>
               <td>$ {producto.price}</td>
               <td><a href={producto.permalink} target="_blank" rel="noopener noreferrer">Link</a></td>
